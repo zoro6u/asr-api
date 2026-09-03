@@ -12,6 +12,6 @@ RUN python -c "from transformers import pipeline; pipeline('automatic-speech-rec
 
 COPY main.py .
 
-EXPOSE 7860
+EXPOSE 8000
 
-CMD ["fastapi", "run", "main.py", "--host", "0.0.0.0", "--port", "7860"]
+CMD ["fastapi", "run", "main.py", "--host", "0.0.0.0", "--port", "8000"]

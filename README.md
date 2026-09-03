@@ -61,3 +61,17 @@ Check the job. Returns `processing`, `done` (with `text`), or `failed`.
 ```json
 {"status": "done", "text": " Hi, good afternoon..."}
 ```
+
+## Deployment
+
+The service is containerized and runs anywhere Docker is available:
+
+```bash
+docker build -t asr-api .
+docker run -p 8000:8000 asr-api
+```
+
+Note: transcription runs as a background task after the HTTP response is
+returned, so the platform must keep the container's CPU running between
+requests. Serverless platforms that throttle CPU after the response will
+not work with this design.
