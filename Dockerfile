@@ -8,10 +8,10 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
+RUN python -c "from transformers import pipeline; pipeline('automatic-speech-recognition', model='openai/whisper-tiny')"
+
 COPY main.py .
 
-EXPOSE 8000
+EXPOSE 7860
 
-CMD ["fastapi", "run", "main.py", "--host", "0.0.0.0", "--port", "8000"]
-
-RUN python -c "from transformers import pipeline; pipeline('automatic-speech-recognition', model='openai/whisper-tiny')"
+CMD ["fastapi", "run", "main.py", "--host", "0.0.0.0", "--port", "7860"]
