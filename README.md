@@ -44,3 +44,20 @@ Response:
 - Uses `whisper-tiny`, the smallest Whisper model — fast but less accurate than larger variants
 - Runs on CPU only, "Better than nothing LOL".
 - Transcription takes roughly 9x the audio duration (~90s for a 10s clip).
+- Job state is kept in memory, so it is lost when the server restartsز
+
+## API
+
+### `POST /transcribe/`
+Upload an audio file. Returns immediately with a job ID.
+
+```json
+{"job_id": "abc-123", "status": "processing"}
+```
+
+### `GET /status/{job_id}`
+Check the job. Returns `processing`, `done` (with `text`), or `failed`.
+
+```json
+{"status": "done", "text": " Hi, good afternoon..."}
+```
