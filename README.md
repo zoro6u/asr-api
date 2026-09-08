@@ -1,3 +1,5 @@
+![Tests](https://github.com/zoro6u/asr-api/actions/workflows/tests.yml/badge.svg)
+
 # Speech-to-Text API
 
 A FastAPI service that transcribes audio files to text using OpenAI's Whisper model.
