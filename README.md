@@ -70,7 +70,11 @@ The service is containerized and runs anywhere Docker is available:
 docker build -t asr-api .
 docker run -p 8000:8000 asr-api
 ```
+## Tests
 
+```bash
+pytest -v
+```
 Note: transcription runs as a background task after the HTTP response is
 returned, so the platform must keep the container's CPU running between
 requests. Serverless platforms that throttle CPU after the response will
