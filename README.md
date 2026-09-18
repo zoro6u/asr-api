@@ -4,6 +4,8 @@
 
 A FastAPI service that transcribes audio files to text using OpenAI's Whisper model.
 
+**Live API**: https://asr-api-hidden-horizon-1166.fly.dev/ — try it at [`/docs`](https://asr-api-hidden-horizon-1166.fly.dev/docs)
+
 ## Requirements
 
 - Python 3.10+
@@ -46,7 +48,7 @@ Response:
 - Uses `whisper-tiny`, the smallest Whisper model — fast but less accurate than larger variants
 - Runs on CPU only, "Better than nothing LOL".
 - Transcription takes roughly 9x the audio duration (~90s for a 10s clip).
-- Job state is kept in memory, so it is lost when the server restartsز
+- Job state is kept in memory, so it is lost when the server restarts.
 
 ## API
 
@@ -72,6 +74,9 @@ The service is containerized and runs anywhere Docker is available:
 docker build -t asr-api .
 docker run -p 8000:8000 asr-api
 ```
+
+Currently deployed on [Fly.io](https://fly.io) (Johannesburg region, `shared-cpu-1x`, 1GB RAM) with `min_machines_running = 1` so the background task isn't interrupted mid-transcription.
+
 ## Tests
 
 ```bash
